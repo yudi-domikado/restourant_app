@@ -1,0 +1,53 @@
+
+
+<h1>Menu</h1>
+
+<table class="table">
+  <thead >
+  	<tr>
+ 	<th>Name</th>
+ 	<th>Picture</th>
+ 	<th>Price</th>
+ 	<th>Purchase</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @foods.each do |food| %>
+    <!-- dalam masalah loop..yang di loop tr nya -->
+    		<tr>
+    			<td><%= food.name %></td>
+					<td><%= image_tag food.picture.url(:thumb) %></td>
+					<td id="food">
+					  <%= number_to_currency(food.price, unit: "Rp.", format: "%u %n") %>
+					</td>
+					<td>    	
+						<!-- instansi form harus di setiap satu <td> -->
+						<%= form_tag carts_path do  %>	
+				   		<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
+				   		<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
+					  <%= submit_tag 'Buy Now', :class => 'btn' %>		
+					  <% end %>
+					</td>
+				</tr>
+	</tbody>
+
+<% end %>
+
+</table>
+		
+
+		<!-- form_tag membuat form tanpa perlu ada object pembentuk -->
+		<!-- form_for membuat form berdasarkan object pembentuk -->
+
+		<!-- form_for @user do |f| salah satu contoh pembuatan form_for -->
+
+		<!-- form_tag cart_path do salah satu contoh pembuatan form_tag dan tidak perlu pakai do terkadang -->
+
+		<!-- selalu ditambahi dengan _tag dibelakang apapun field//tipe -->
+		<!-- text_field_tag :name,"value"  <input name="name" type="text" "value="value">-->
+		<!-- text_field_tag "user[name]", "value" <input name="user[name]" type="text" value="value"> -->
+		<!-- form aksi POST PUT GET DELETE bisa diliat di rake routes -->
+		<!-- kalo mengambil data memakai GET -->
+		<!-- POST udah masih request , kalo PUT udah pasti update , kalo DELETE pasti destroy -->
+		<!-- PUT butuh ID , GET pake ID jatuhnya show , Delete butuh ID -->
+		<!-- REST ACTION - > Representational state transfer mempresentasikan keadaan yang mau di transfer-->
