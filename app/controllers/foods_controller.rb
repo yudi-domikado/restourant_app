@@ -9,7 +9,7 @@ class FoodsController < ApplicationController
  #  end
 
 	def show
-		redirec_to foods_path
+		redirect_to foods_path
 	end
 
 
