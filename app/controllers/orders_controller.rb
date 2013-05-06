@@ -6,7 +6,25 @@ class OrdersController < ApplicationController
 
 	def show
 		@order = Order.find(params[:id])
+    # @order.search ( gak bisa )
+    # tapi klo panggilnya
+    # Order.search ( baru bisa )
+    # karena di dalam class Order
+    # method search menggunakan def self.search bukan def search
 	end
+
+  Order.search
+
+  class Order < ActiveRercord::Base
+     
+     # jika ada method yang menggunakan self. 
+     # maka disebut class method
+     # artinya method tersebut bisa menjalan semua method dari class tersebut
+     # tanpa harus membuat / initialize si method (.new)
+     def self.search
+
+     end
+  end
 
 
 	def approve

@@ -27,3 +27,7 @@ p.footerdomikado
   width:246px;
   }
 
+.tbl
+  {
+  margin-top:0px !important; /*override semua dijadikan terpenting*/
+  }
