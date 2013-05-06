@@ -108,7 +108,8 @@ ActiveAdmin.setup do |config|
   #
   # You can change the name under which comments are registered:
   # config.comments_registration_name = 'AdminComment'
-
+  config.allow_comments = false
+  config.show_comments_in_menu = false
 
   # == Batch Actions
   #
@@ -182,10 +183,10 @@ ActiveAdmin.setup do |config|
   #   config.namespace :admin do |admin|
   #
   #     # Disable the links entirely
-  #     admin.download_links = false
+  #       admin.download_links = false
   #
   #     # Only show XML & PDF options
-  #     admin.download_links = [:xml, :pdf]
+  #       admin.download_links = [:xml, :pdf]
   #
   #   end
 

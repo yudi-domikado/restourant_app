@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'dynamic_form', :git => "git://github.com/rails/dynamic_form.git"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'activeadmin', git: "git://github.com/gregbell/active_admin.git"
 gem 'devise'

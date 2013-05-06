@@ -16,6 +16,13 @@ GIT
       sass (>= 3.1.0)
 
 GIT
+  remote: git://github.com/rails/dynamic_form.git
+  revision: ebb03213ef8268e24c60e5e162b811d199777227
+  specs:
+    dynamic_form (1.0.0)
+      rails (>= 3.0.0)
+
+GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
   revision: 404d7feca2596850ba2710e7c755773ba1e8eaa0
   specs:
@@ -187,6 +194,7 @@ DEPENDENCIES
   activeadmin!
   coffee-rails (~> 3.2.1)
   devise
+  dynamic_form!
   jquery-rails
   mysql2
   paperclip!
