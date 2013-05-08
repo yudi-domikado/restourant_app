@@ -13,6 +13,7 @@
 	</thead>
 
 	<tbody>
+		
 		<% @cart.cart_items.each do |cart_item|%>
 		<tr>
 			<td><%= cart_item.food.try(:name) %></td>
@@ -20,7 +21,6 @@
 			<td><%= number_to_currency(cart_item.price * cart_item.quantity, unit: "Rp.", format: "%u %n")  %></td>
 			<td>
         <%= form_for cart_item do |f_item| %>
-        	<%= error_messages_for :cart_item %>
           <%= f_item.number_field :quantity, :style => "width:50px"%>
    		  	<%= f_item.submit "Update", class: 'btn' %>	 
    		  	<%= link_to "Delete", cart_item_path(cart_item), :method => :delete, :class => 'btn btn-alert' %>

@@ -24,7 +24,10 @@
 	</tbody>
 <% end %>
 </table>
+<%= form_tag orders_path, :method => :post do %>
+	<%= text_area_tag :comment, "Type your comments Here" %>
 	<div class="btn btn-inverse">
 		<h4> Total: <%= total %> </h4>
-				<%= link_to "Approve?", approve_orders_path, class: "btn btn-info" %>
+				<%= submit_tag "Approve?", class: "btn btn-info" %>
 	</div>
+	<% end %>

@@ -55,12 +55,7 @@
                 <li><li><%= link_to "Orders", "/orders" %></li></li>
               <% end %>
             </ul>
-            <ul class="nav">
-             <%= form_tag(foods_path, :method => :get, :html => {:class => "form-inline", :style => "margin:5px 0 0 0;"} ) do  %>
-                <%= text_field_tag :search, (params[:search]), :class => "input-small search-query" %> 
-                <%= submit_tag "search", :class => 'btn', :style => 'margin-bottom:10px;', :name => nil %>
-             <% end %> 
-            </ul>
+
             <div class="pull-right">
               <% if user_signed_in? %>
                 <%= link_to "Sign out",  destroy_user_session_path, :method => :delete, :class => 'btn' %>

@@ -7,6 +7,8 @@
   	<tr>
  	<th>ID</th>
  	<th>Total</th>
+  <th>User</th>
+  <th>comments</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +19,11 @@
 					<td>
 					  <%= number_to_currency(order.ammount, unit: "Rp.", format: "%u %n") %>
 					</td>
+          <td>
+            <%= order.user.name %>
+          </td>
+          <td><%= order.comment %></td>
+
 				</tr>
 	</tbody>
 

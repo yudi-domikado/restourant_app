@@ -13,24 +13,24 @@ class OrdersController < ApplicationController
     # method search menggunakan def self.search bukan def search
 	end
 
-  Order.search
+  # Order.search
 
-  class Order < ActiveRercord::Base
+  # class Order < ActiveRercord::Base
      
-     # jika ada method yang menggunakan self. 
-     # maka disebut class method
-     # artinya method tersebut bisa menjalan semua method dari class tersebut
-     # tanpa harus membuat / initialize si method (.new)
-     def self.search
+  #    # jika ada method yang menggunakan self. 
+  #    # maka disebut class method
+  #    # artinya method tersebut bisa menjalan semua method dari class tersebut
+  #    # tanpa harus membuat / initialize si method (.new)
+  #    def self.search
 
-     end
-  end
+  #    end
+  # end
 
 
-	def approve
+	def create
 		# process pemindahan data dari cart ke order
-		# berdasarkan session id dari shopping cart dan user id yang login
-		Order.approve_cart(session_cart, current_user.id) # <--- disini dijelaskan bahwa model Order memanggil metode Approve Cart ( dua metode )
+		# berdasarkan session id dari shopping cart dan user id yang login juga komen dari form order
+		Order.approve_cart(session_cart, current_user.id, params[:comment]) # <--- disini dijelaskan bahwa model Order memanggil metode Approve Cart ( dua metode )
 		redirect_to orders_path
 	end
 end

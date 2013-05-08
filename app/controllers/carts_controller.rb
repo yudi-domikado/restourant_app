@@ -2,6 +2,7 @@ class CartsController < ApplicationController
 	
 	def index
 		@cart = Cart.find_or_create_by_session_id(session_cart)	
+		# @cart = Cart.order(:id).page(params[:page]).per(3)
 	end
 
 	def create

@@ -3,11 +3,13 @@ form :partial => "form"
 	form do |f|
 	  f.inputs do
 	    f.input   :name
-	    f.input 	:picture
+	    f.input   :picture
 	    f.input   :price
 	    f.input   :quantity
 	    f.input   :unlimited, :to => :boolean
-	  end
+        f.input   :category, :collection => Category.all.map{|u| [u.category, u.id]}
+        f.input   :tag_list
+      end
 	  f.buttons
 	end
 
@@ -24,6 +26,10 @@ form :partial => "form"
     c.column :unlimited do |food|
     	food.unlimited ? "Unlimited" : "Limited"
     end
+    c.column :category do |cat|
+        cat.category.category # seharusnya namanya name biar ga bingung
+    end
+    c.column :tag_list 
     actions
   end
 

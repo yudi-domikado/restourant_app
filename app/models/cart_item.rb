@@ -1,9 +1,9 @@
 class CartItem < ActiveRecord::Base
   attr_accessible :cart_id, :food_id, :quantity, :price
   belongs_to :food
+  belongs_to :cart
   validates_presence_of :food
   validate :check_food
-  belongs_to :cart
   validates_numericality_of :quantity, :only_integer =>true, 
                             :greater_than_or_equal_to =>0, 
                              message: "is invalid please type it again"
@@ -12,7 +12,6 @@ class CartItem < ActiveRecord::Base
 
   def check_food
   	if !food.unlimited 
-  	
 	  	if quantity.to_i <= food.quantity.to_i  
 	  	#maksudnya jika jumlah kurang atau sama dengan food quantity dan food stock tidak terbatas
 	  	#!!true = true # !true = false

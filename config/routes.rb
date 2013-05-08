@@ -8,10 +8,11 @@ RestaurantApp::Application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
   resources  :users do
-    get :check_out, :on => :collection # collection ga pake id sedangkan member ga pake id
+    get :check_out, :on => :collection # collection ga pake id sedangkan member  pake id
   end
   resources  :orders do
-    get :approve, :on => :collection
+    match :approve, :on => :collection, :via => [:get, :post]
+    #match :approve, :on => :collection, via: [:get, :post] #bisa post dan get pake :via
   end
   resources  :foods
   resources  :carts

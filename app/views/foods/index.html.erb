@@ -11,24 +11,34 @@
  	<th>Name</th>
  	<th>Picture</th>
  	<th>Price</th>
+ 	<th>Category</th>
  	<th>Purchase</th>
     </tr>
   </thead>
   <tbody>
+ 
+
 		<% @foods.each do |food| %>
     <!-- dalam masalah loop..yang di loop tr nya -->
+
+
     		<tr>
     			<td><%= food.name %></td>
 					<td><%= image_tag food.picture.url(:thumb) %></td>
 					<td id="food">
 					  <%= number_to_currency(food.price, unit: "Rp.", format: "%u %n") %>
 					</td>
+					<td><%= food.category.category %></td>
 					<td>    	
 						<!-- instansi form harus di setiap satu <td> -->
-						<%= form_tag carts_path do  %>	
-				   		<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
-				   		<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
-					  <%= submit_tag 'Buy Now', :class => 'btn' %>		
+						<% if food.quantity.to_i > 0 || food.unlimited # ! mempersingkat jawaban bolean untuk false , || untuk or %>
+							<%= form_tag carts_path do  %>	
+				   			<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
+				   			<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
+					 		 	<%= submit_tag 'Buy Now', :class => 'btn' %>		
+					  	<% end %>
+					  <% else %>
+					   Out of Stock
 					  <% end %>
 					</td>
 				</tr>
@@ -36,7 +46,8 @@
 	</tbody>
 	<% end %>
 </table>
-		
+		   <%= paginate @foods %>
+    
 
 		<!-- form_tag membuat form tanpa perlu ada object pembentuk -->
 		<!-- form_for membuat form berdasarkan object pembentuk -->
