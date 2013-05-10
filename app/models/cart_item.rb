@@ -6,7 +6,7 @@ class CartItem < ActiveRecord::Base
   validate :check_food
   validates_numericality_of :quantity, :only_integer =>true, 
                             :greater_than_or_equal_to =>0, 
-                             message: "is invalid please type it again"
+                             message: "number is invalid please type it again"
   
   before_destroy :add_stock_food
 

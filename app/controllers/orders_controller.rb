@@ -1,11 +1,26 @@
 class OrdersController < ApplicationController
 
 	def index
-		@orders = Order.all
+		#@orders = Order.all 
+    @orders = current_user.orders.all
 	end
+# ACTIVE RECORD QUERY INTERFACE
+
+# dalam mempermudah pemanggilan view dan lain2 ada macam cara.
+
+# Yang harus diperhatikan relasi dalam model seperti has_many and belongs_to
+
+# misalkan user dan order
+
+# user has many orders , order belongs to user . Pemanggilanya adalah :
+
+# current_user.orders
+# order.user
+
+# @orders = current_user.orders.all <-- controller ( berarti manggil order yang dimiliki user saat ini )
 
 	def show
-		@order = Order.find(params[:id])
+		@order = Order.find(params[:id]) 
     # @order.search ( gak bisa )
     # tapi klo panggilnya
     # Order.search ( baru bisa )
@@ -34,7 +49,11 @@ class OrdersController < ApplicationController
 		redirect_to orders_path
 	end
 end
+  private
 
+  def current_user?(user)
+  @current_user == user
+  end
 
   #Di Controller
   # Call back : Fungsi yang akan dijalankan untuk suatu event atau kondisi

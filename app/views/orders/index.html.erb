@@ -1,6 +1,6 @@
 
 
-<h1>Menu</h1>
+<h1>Order List</h1>
 
 <table class="table">
   <thead >
@@ -8,10 +8,14 @@
  	<th>ID</th>
  	<th>Total</th>
   <th>User</th>
+  <th>Menu</th>
+  <th>Picture</th>
+  <th>Quantity</th>
   <th>comments</th>
     </tr>
   </thead>
   <tbody>
+
 		<% @orders.each do |order| %>
     <!-- dalam masalah loop..yang di loop tr nya -->
     		<tr>
@@ -22,6 +26,18 @@
           <td>
             <%= order.user.name %>
           </td>
+            <% order.order_items.each do |order_item| %>  
+          <td>
+            <%= order_item.food.name  %> 
+          </td> 
+          <td>
+            <%= image_tag order_item.food.picture.url(:thumb)%>
+          </td>
+          <td>  
+            <%= order_item.quantity %>
+          </td>
+          <% end %>
+            <!-- untuk mendapatkan informasi masing2 element relasi yang jumlahnya banyak maka harus menggunakan proses looping/mapping untuk mengambil info dari model tersebut atau turunanya-->
           <td><%= order.comment %></td>
 
 				</tr>

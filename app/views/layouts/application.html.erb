@@ -55,10 +55,13 @@
                 <li><li><%= link_to "Orders", "/orders" %></li></li>
               <% end %>
             </ul>
-
             <div class="pull-right">
               <% if user_signed_in? %>
+                <ul class="nav" style="margin-top:11px !important;">
+                  <li>Balance : <%= number_to_currency(current_user.balance, unit: "Rp.", format: "%u %n") || "0" %> </li>
+                </ul>
                 <%= link_to "Sign out",  destroy_user_session_path, :method => :delete, :class => 'btn' %>
+                <%= link_to "Top Up",edit_user_registration_path, :class => 'btn btn-success' %>
               <% else %>
                 <%= link_to "Login", new_user_session_path, :class => 'btn' %> 
                 <%= link_to "Register", new_user_registration_path, :class => 'btn btn-primary' %>

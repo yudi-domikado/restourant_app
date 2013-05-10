@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  credit: 1
+  topup_date: 2013-05-10
+  user_id: 1
+
+two:
+  credit: 1
+  topup_date: 2013-05-10
+  user_id: 1

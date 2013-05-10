@@ -5,6 +5,12 @@
 		<%= text_field_tag :search, (params[:search]) %> 
 		<%= submit_tag "search", :class => 'btn', :style => 'margin-bottom:10px;', :name => nil %>
 	<% end %>	
+	<b>Tags :</b>
+	<div id="tag_cloud">
+		<% tag_cloud Food.tag_counts, %w[s m l] do |tag, css_class|%>
+			<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+		<% end %>
+	</div>
 <table class="table">
   <thead >
   	<tr>
@@ -12,6 +18,7 @@
  	<th>Picture</th>
  	<th>Price</th>
  	<th>Category</th>
+ 	<th>Tags</th>
  	<th>Purchase</th>
     </tr>
   </thead>
@@ -29,6 +36,7 @@
 					  <%= number_to_currency(food.price, unit: "Rp.", format: "%u %n") %>
 					</td>
 					<td><%= food.category.category %></td>
+					<td><%= raw food.tag_list.map {|t| link_to t, tag_path(t)}.join(", ") %> </td>
 					<td>    	
 						<!-- instansi form harus di setiap satu <td> -->
 						<% if food.quantity.to_i > 0 || food.unlimited # ! mempersingkat jawaban bolean untuk false , || untuk or %>

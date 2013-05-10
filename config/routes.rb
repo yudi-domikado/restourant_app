@@ -1,7 +1,4 @@
 RestaurantApp::Application.routes.draw do  
-
-
-
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -22,7 +19,7 @@ RestaurantApp::Application.routes.draw do
   get "/about_us"  ,  to: 'home#about_us'
   get "/foods"     ,  to: 'food#index'
   get "/orders"    ,  to: 'order#index'
-
+  get "/tags/:tag"  , to: 'foods#index', as: :tag
   root :to => "home#index"
 
   # The priority is based upon order of creation:
