@@ -49,11 +49,8 @@ class OrdersController < ApplicationController
 		redirect_to orders_path
 	end
 end
-  private
 
-  def current_user?(user)
-  @current_user == user
-  end
+ 
 
   #Di Controller
   # Call back : Fungsi yang akan dijalankan untuk suatu event atau kondisi

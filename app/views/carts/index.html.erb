@@ -20,7 +20,7 @@
 			<td><%= image_tag cart_item.food.picture.url(:thumb) %></td>
 			<td><%= number_to_currency(cart_item.price * cart_item.quantity, unit: "Rp.", format: "%u %n")  %></td>
 			<td>
-        <%= form_for cart_item do |f_item| %>
+        <%= form_for cart_item do |f_item| %> 
           <%= f_item.number_field :quantity, :style => "width:50px"%>
    		  	<%= f_item.submit "Update", class: 'btn' %>	 
    		  	<%= link_to "Delete", cart_item_path(cart_item), :method => :delete, :class => 'btn btn-alert' %>
@@ -34,8 +34,10 @@
 	<div class="btn btn-inverse">
 				<%= link_to "Check Out", check_out_users_path %>
 			</div>
-	<!-- form_tag membuat form tanpa perlu ada object pembentuk -->
-		<!-- form_for membuat form berdasarkan object pembentuk -->
+	<!-- form_tag membuat form tanpa perlu ada object pembentuk biasanya string atau hash-->
+		<!-- form_for membuat form berdasarkan object pembentuk dan pasti punya kelas-->
+
+		<!-- form for pasti mengikutin nama object nama kelasnya user dari objek pembentuk(misalkan) -->
 
 		<!-- form_for @user do |f| salah satu contoh pembuatan form_for -->
 

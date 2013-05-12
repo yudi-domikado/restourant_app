@@ -9,3 +9,11 @@ before_filter :authenticate_user! # harus login
 	end
 
 end
+
+
+# # POST /events.xml
+#   def create
+#     @event = Event.new(params[:event])
+#     @event.user_id = current_user.id
+#     end
+#   end

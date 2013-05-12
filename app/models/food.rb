@@ -3,6 +3,7 @@ class Food < ActiveRecord::Base
   belongs_to :category
   has_many :cart_items
   has_many :order_items
+  has_ancestry
   acts_as_taggable
 
   validates_numericality_of :quantity, :null => false, :greater_than_or_equal_to => 0
