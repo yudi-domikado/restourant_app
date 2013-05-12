@@ -27,6 +27,7 @@ gem 'activeadmin', git: "git://github.com/gregbell/active_admin.git"
 gem 'devise'
 gem 'jquery-rails'
 gem 'ancestry', :git => "git://github.com/stefankroes/ancestry.git"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

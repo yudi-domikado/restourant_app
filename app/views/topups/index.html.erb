@@ -1,0 +1,23 @@
+<h1>Top ups?</h1>
+
+
+<p>Hi and Hello , <%= current_user.name %></p>
+
+	<% if credit = 0 %>
+	<%= "Welcome to our topup services.
+	Please topup before ordering any menu." %>
+			<%= form_for Topup.create  do |topup| %>
+			<%= topup.label :credit %>
+			<%= topup.number_field :credit %>
+			<%= topup.submit %>
+			<% end %>	
+	<% else %>
+		<%= form_tag topups_path do  %>	
+			<%= hidden_field_tag :user_id, user.id %> <!-- memindahkan value -->
+					<%= number_field_tag :credit, :style => "width: 100px", :min => 1 %>
+				<%= submit_tag 'Top Up!', :class => 'btn' %>
+			<% end %>
+
+	<% end %>	
+
+
