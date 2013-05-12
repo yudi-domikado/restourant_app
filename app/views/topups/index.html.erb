@@ -6,7 +6,7 @@
 	<% if credit = 0 %>
 	<%= "Welcome to our topup services.
 	Please topup before ordering any menu." %>
-			<%= form_for Topup.create  do |topup| %>
+			<%= form_for @topup do |topup| %>
 			<%= topup.label :credit %>
 			<%= topup.number_field :credit %>
 			<%= topup.submit %>

@@ -7,13 +7,13 @@ class TopupsController < ApplicationController
 
 	def new
 		if current_user?
-			@topup = Topup.new
+			@topup = Topup.new(:user_id => @user.id)
 		else
 			flash[:alert] = "Wrong user"
 		end
 	end
-
 	def create
+		@topup = current_user.topups.build(params[:topup])
 		@topup = User.find(session[:id])
 		@topup.user_id = User.id
 		@topup = Topup.create(params[:topup])
