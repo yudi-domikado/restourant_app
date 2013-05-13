@@ -36,3 +36,14 @@ class TopupsController < ApplicationController
 
 
 end
+#untuk pembelajaran cek def create
+#untuk masukin current_user id ke user_id relasi
+#antara topup dan user ( user has many topups)
+# JANGAN LUPA
+	# def create
+	# 	@topup = current_user.topups.create(params[:topup])
+	# 	#cara untuk mendapatkan current_user id pindah ke user_id
+	# 	#objek pembentuk di form_for adalah :topup
+	# 	#membentuk create
+	# 	redirect_to topups_path
+	# end

@@ -1,19 +1,20 @@
-<h1>Top ups?</h1>
+<div id="content" class="clearfix">
+  <div id="left-area" class="clearfix full-wide"> 
 
-
-<p>Hi and Hello , <%= current_user.name %></p>
+<h1>Top <span>ups?</span></h1>
+<br/>
+<p>Hi and Hello ,<span><%= current_user.name %></span></p>
 
 	<% if credit = 0 %>
-	<%= "Welcome to our topup services.
-	Please topup before ordering any menu." %>
-	<br/>
-	<br/>
+	Welcome to our topup services.
+	Please topup before ordering any menu.<br/>
 	<%= link_to "Topup!", new_topup_path, :class => 'btn' %>
 	<% else %>
 		<%= "Feel Free to add more topups" %>
-	<br/>
-	<br/>
 	<%= link_to "Topup!", edit_topup_path, :class => 'btn' %>	
-	<% end %>
+	<% end %><br/>
+  Your Balance is: <%= number_to_currency(current_user.balance, unit: "Rp.", format: "%u %n") || "0" %> 
+</div>
+</div>
 
 

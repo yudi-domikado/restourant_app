@@ -1,61 +1,74 @@
+<div id="content" class="clearfix">
+	<div id="left-area" class="clearfix full-wide"> 
 
+		<h2 class="title">Recent <span>Recepies</span></h2>
+			<p>If food is an experience for you, then you will find it at the Food Recipe</p>
 
-<h1>Menu</h1>
-	<%= form_tag(foods_path, :method => :get, :html => {:class => "form-inline"} ) do  %>
-		<%= text_field_tag :search, (params[:search]) %> 
-		<%= submit_tag "search", :class => 'btn', :style => 'margin-bottom:10px;', :name => nil %>
-	<% end %>	
-	<b>Tags :</b>
-	<div id="tag_cloud">
-		<% tag_cloud Food.tag_counts, %w[s m l] do |tag, css_class|%>
-			<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+		<%= form_tag(foods_path, :method => :get, :html => {:class => "form-inline"} ) do  %>
+			<%= text_field_tag :search, (params[:search]), :class => 'field' %> 
+			<%= submit_tag "search", :id=> 's_submit', :name => nil, class: "readmore" %>
 		<% end %>
-	</div>
-<table class="table">
-  <thead >
-  	<tr>
- 	<th>Name</th>
- 	<th>Picture</th>
- 	<th>Price</th>
- 	<th>Category</th>
- 	<th>Tags</th>
- 	<th>Purchase</th>
-    </tr>
-  </thead>
-  <tbody>
- 
+		<br/>
+		<b>Tags :</b>
+		<br/>
+		
+		<div id="tag_cloud">
+			<% tag_cloud Food.tag_counts, %w[s m l] do |tag, css_class|%>
+				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+			<% end %>
+		</div>
+		
+		<table class="table">
+		  <thead >
+		  	<tr>
+				 	<th>Name</th>
+				 	<th>Picture</th>
+				 	<th>Price</th>
+				 	<th>Category</th>
+				 	<th>Tags</th>
+				 	<th>Purchase</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		 
 
-		<% @foods.each do |food| %>
-    <!-- dalam masalah loop..yang di loop tr nya -->
+				<% @foods.each do |food| %>
+		    <!-- dalam masalah loop..yang di loop tr nya -->
 
 
-    		<tr>
-    			<td><%= food.name %></td>
-					<td><%= image_tag food.picture.url(:thumb) %></td>
-					<td id="food">
-					  <%= number_to_currency(food.price, unit: "Rp.", format: "%u %n") %>
-					</td>
-					<td><%= food.category.category %></td>
-					<td><%= raw food.tag_list.map {|t| link_to t, tag_path(t)}.join(", ") %> </td>
-					<td>    	
-						<!-- instansi form harus di setiap satu <td> -->
-						<% if food.quantity.to_i > 0 || food.unlimited # ! mempersingkat jawaban bolean untuk false , || untuk or %>
-							<%= form_tag carts_path do  %>	
-				   			<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
-				   			<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
-					 		 	<%= submit_tag 'Buy Now', :class => 'btn' %>		
-					  	<% end %>
-					  <% else %>
-					   Out of Stock
-					  <% end %>
-					</td>
-				</tr>
+		    		<tr>
+		    			<td><%= food.name %></td>
+							<td><%= image_tag food.picture.url(:thumb) %></td>
+							<td id="food">
+							  <%= number_to_currency(food.price, unit: "Rp.", format: "%u %n") %>
+							</td>
+							<td><%= food.category.category %></td>
+							<td><%= raw food.tag_list.map {|t| link_to t, tag_path(t)}.join(", ") %> </td>
+							<td>    	
+								<!-- instansi form harus di setiap satu <td> -->
+								<% if food.quantity.to_i > 0 || food.unlimited # ! mempersingkat jawaban bolean untuk false , || untuk or %>
+									<%= form_tag carts_path do  %>	
+						   			<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
+						   			<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
+							 		 	<%= submit_tag 'Buy Now', :class => 'readmore' %>		
+							  	<% end %>
+							  <% else %>
+							   Out of Stock
+							  <% end %>
+							</td>
+						</tr>
 
-	</tbody>
-	<% end %>
-</table>
-		   <%= paginate @foods %>
-    
+			</tbody>
+			<% end %>
+		</table>
+				   <%= paginate @foods %>
+		                
+	
+	</div>         	
+</div><!-- end of container div -->
+	
+     
+
 
 		<!-- form_tag membuat form tanpa perlu ada object pembentuk -->
 		<!-- form_for membuat form berdasarkan object pembentuk -->

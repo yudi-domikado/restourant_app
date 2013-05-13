@@ -1,3 +1,8 @@
 == Aplikasi simple Restaurant
 
 Aplikasi restaurant dengan integrasi gem active_admin,devise,paperclip + simple shop cart yang menggunakan session_id dan user_id
+
+
+---------------------------------------------------------------------------
+jangan lupa naekin picture each do di index..biar imagenya keluar ke depan.
+---------------------------------------------------------------------------
