@@ -6,17 +6,11 @@ class TopupsController < ApplicationController
 	end
 
 	def new
-		if current_user?
-			@topup = Topup.new(:user_id => @user.id)
-		else
-			flash[:alert] = "Wrong user"
-		end
+		@topup = Topup.new
 	end
+
 	def create
-		@topup = current_user.topups.build(params[:topup])
-		@topup = User.find(session[:id])
-		@topup.user_id = User.id
-		@topup = Topup.create(params[:topup])
+		@topup = current_user.topups.create(params[:topup])
 		#objek pembentuk di form_for adalah :topup
 		#membentuk create
 		redirect_to topups_path

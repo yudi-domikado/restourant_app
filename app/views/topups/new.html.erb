@@ -1,0 +1,12 @@
+<h1> Top Up! </h1>
+
+<p> Please input the desire ammount for your topup. </p>
+<p>Welcome to our topup services.Please topup before ordering any menu.</p>
+<% if credit = 0 %>
+	<%= form_for @topup do |topup| %>
+	<%= topup.hidden_field :user_id , value: current_user.id %>
+		<%= topup.label :credit %>
+		<%= topup.number_field :credit %>
+		<%= topup.submit %>
+	<% end %>	
+<% end %>	

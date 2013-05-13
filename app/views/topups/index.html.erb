@@ -6,18 +6,14 @@
 	<% if credit = 0 %>
 	<%= "Welcome to our topup services.
 	Please topup before ordering any menu." %>
-			<%= form_for @topup do |topup| %>
-			<%= topup.label :credit %>
-			<%= topup.number_field :credit %>
-			<%= topup.submit %>
-			<% end %>	
+	<br/>
+	<br/>
+	<%= link_to "Topup!", new_topup_path, :class => 'btn' %>
 	<% else %>
-		<%= form_tag topups_path do  %>	
-			<%= hidden_field_tag :user_id, user.id %> <!-- memindahkan value -->
-					<%= number_field_tag :credit, :style => "width: 100px", :min => 1 %>
-				<%= submit_tag 'Top Up!', :class => 'btn' %>
-			<% end %>
-
-	<% end %>	
+		<%= "Feel Free to add more topups" %>
+	<br/>
+	<br/>
+	<%= link_to "Topup!", edit_topup_path, :class => 'btn' %>	
+	<% end %>
 
 
