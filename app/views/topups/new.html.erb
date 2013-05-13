@@ -4,9 +4,11 @@
 <p>Welcome to our topup services.Please topup before ordering any menu.</p>
 <% if credit = 0 %>
 	<%= form_for @topup do |topup| %>
-	<%= topup.hidden_field :user_id , value: current_user.id %>
 		<%= topup.label :credit %>
-		<%= topup.number_field :credit %>
-		<%= topup.submit %>
+		<%= topup.number_field :credit %><br/>
+		<%= topup.submit " Topup !", :class => 'btn' %>
 	<% end %>	
 <% end %>	
+
+
+<!--<%#= topup.hidden_field :user_id , value: current_user.id %>-->

@@ -11,6 +11,7 @@ class TopupsController < ApplicationController
 
 	def create
 		@topup = current_user.topups.create(params[:topup])
+		#cara untuk mendapatkan current_user id pindah ke user_id
 		#objek pembentuk di form_for adalah :topup
 		#membentuk create
 		redirect_to topups_path
