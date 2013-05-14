@@ -6,7 +6,7 @@
 	<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame. Remove this if you use the .htaccess -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
-	<title>Website Title</title>
+	<title>Domikado Restaurant</title>
 	<%= stylesheet_link_tag "applications", :media => "all" %>
 	  <%= javascript_include_tag "applications" %>
     
@@ -48,7 +48,7 @@
 												
 												</ul>
 										</li> -->
-										<li><a href="/foods">Recent Recipes</a></li>
+										<li><a href="/foods">Our Menu</a></li>
                                     <!--     <li>
 												<a href="single-sb.html">Recipe Detail</a>
 												<ul>
@@ -56,9 +56,9 @@
 														<li><a href="single-full.html">Variation Two</a></li>
 												</ul>
 										</li> -->
-										<li><a href="services.html">Services</a></li>
+<!-- 										<li><a href="services.html">Services</a></li>
 										<li><a href="single.html">Single Post</a></li>										
-                    <li><a href="features.html">Features</a>
+                    <li><a href="features.html">Features</a> -->
                     <% if user_signed_in? %>
                 			<li><li><%= link_to "Orders", "/orders" %></li></li>
               			<% end %>
@@ -104,25 +104,27 @@
 <!-- ============= CONTAINER STARTS HERE ============== -->
 		
         <div id="container">
-		
-		        <!-- WEBSITE SEARCH STARTS HERE -->    	
-				<div class="top-search clearfix">
-						<h3 class="head-pet"><span>Recipe Search</span></h3>
-						<form action="#" id="searchform" method="post">
-								<p>
-										<input type="text" name="2" id="s" class="field" value="Search for" />
-										<input type="submit" name="s_submit" id="s-submit" value="" />
-								</p>
-						</form>
-						<p class="statement"><span class="fireRed">Popular searches :</span> <a href="#">meatloaf recipes</a>, <a href="#">banana cake recipes</a>, <a href="#">cheesecake recipes</a>, <a href="#">carbonara recipes</a></p>
-				</div><!-- end of top-search div-->
-        
+				
+<div class="top-search clearfix">
+					<h3 class="head-pet"><span>Recipe Search</span></h3>
+
+					<%= form_tag(foods_path, :method => :get, :html => {:class => "form-inline"} ) do  %>
+							<p>
+									<%= text_field_tag :search, (params[:search]), :class => 'field' %> 
+									<%= submit_tag "", :id => 's-submit', :name => "s_submit"%>
+							</p>
+					<% end %>
+					<p class="statement"><span class="fireRed">Popular searches :</span>
+						<% tag_cloud Food.tag_counts(:limit => 5, :order => "count desc"), %w[s m l] do |tag, css_class|%>
+							<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+						<% end %>
+					</p>
+</div>
+
 		        <!-- ============= CONTENT AREA STARTS HERE ============== -->
-        		
-			
-         	  <%= bootstrap_flash %>
+
+		   	  <%= bootstrap_flash %>
         	  <%= yield %>
-		   	
 	</div><!-- end of content div -->
 		                
 		        		<!-- CONTENT ENDS HERE -->

@@ -1,41 +1,24 @@
+
 <div id="content" class="clearfix">
 	<div id="left-area" class="clearfix full-wide"> 
-
-		<h2 class="title">Recent <span>Recepies</span></h2>
-			<p>If food is an experience for you, then you will find it at the Food Recipe</p>
-
-		<%= form_tag(foods_path, :method => :get, :html => {:class => "form-inline"} ) do  %>
-			<%= text_field_tag :search, (params[:search]), :class => 'field' %> 
-			<%= submit_tag "search", :id=> 's_submit', :name => nil, class: "readmore" %>
-		<% end %>
-		<br/>
-		<b>Tags :</b>
-		<br/>
-		
-		<div id="tag_cloud">
-			<% tag_cloud Food.tag_counts, %w[s m l] do |tag, css_class|%>
-				<%= link_to tag.name, tag_path(tag.name), class: css_class %>
-			<% end %>
-		</div>
-		
-		<table class="table">
-		  <thead >
-		  	<tr>
-				 	<th>Name</th>
-				 	<th>Picture</th>
-				 	<th>Price</th>
-				 	<th>Category</th>
-				 	<th>Tags</th>
-				 	<th>Purchase</th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		 
-
-				<% @foods.each do |food| %>
-		    <!-- dalam masalah loop..yang di loop tr nya -->
-
-
+		<div class="columns">
+			<div class="two-third">
+				<h2 class="title">Recent <span>Recepies</span></h2>
+				<p>If food is an experience for you, then you will find it at the Food Recipe</p>
+				<table class="table">
+				  <thead >
+			  	<tr>
+					 	<th>Name</th>
+					 	<th>Picture</th>
+					 	<th>Price</th>
+					 	<th>Category</th>
+					 	<th>Tags</th>
+					 	<th>Purchase</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+					<% @foods.each do |food| %>
+			    <!-- dalam masalah loop..yang di loop tr nya -->
 		    		<tr>
 		    			<td><%= food.name %></td>
 							<td><%= image_tag food.picture.url(:thumb) %></td>
@@ -57,13 +40,53 @@
 							  <% end %>
 							</td>
 						</tr>
+					</tbody>
+					<% end %>
+				</table>
+			<%= paginate @foods %>
+			</div>
+			<div class="one-third">
+				<% @weekly.take(1).each do |food| %>								
+					<h3><%= food.name %></h3>
+					<span class="w-pet-border"></span>
+					<a href="#" class="img-box-serv">
+						<%= image_tag food.picture, :alt => "weekly Special" %>
+					</a>
+					<p><a href="#" class="black">
+					  <%= food.info %>Lorem ipsum dolor sit amet,</a> consectetur adip isicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitatimco laboris nisi ut aliquip ex ea commodo conquat. Duis aute irure dolor in reprehenderit in voluptate veesse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat
+					</p>
+					<a href="#" class="readmore rightalign">Read More</a>
+				<% end %>
+			</div>
+			<div class="one-third">
+												<h3>Cooking Classes</h3>
+												<span class="w-pet-border"></span>
+												<a href="#" class="img-box-serv">
+													<img src="images/services/services_1.jpg" alt="Services Image" />
+												</a>
+												<p><a href="#" class="black">Lorem ipsum dolor sit amet,</a> consectetur adip isicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitatimco laboris nisi ut aliquip ex ea commodo conquat. Duis aute irure dolor in reprehenderit in voluptate veesse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat</p>
+												<a href="#" class="readmore rightalign">Read More</a>
+			</div>                                   
+			<div class="one-third">
+												<h3>Cooking Classes</h3>
+												<span class="w-pet-border"></span>
+												<a href="#" class="img-box-serv">
+													<img src="images/services/services_1.jpg" alt="Services Image" />
+												</a>
+												<p><a href="#" class="black">Lorem ipsum dolor sit amet,</a> consectetur adip isicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitatimco laboris nisi ut aliquip ex ea commodo conquat. Duis aute irure dolor in reprehenderit in voluptate veesse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat</p>
+												<a href="#" class="readmore rightalign">Read More</a>
+			</div>
+			<div class="one-third">
+												<h3>Cooking Classes</h3>
+												<span class="w-pet-border"></span>
+												<a href="#" class="img-box-serv">
+													<img src="images/services/services_1.jpg" alt="Services Image" />
+												</a>
+												<p><a href="#" class="black">Lorem ipsum dolor sit amet,</a> consectetur adip isicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitatimco laboris nisi ut aliquip ex ea commodo conquat. Duis aute irure dolor in reprehenderit in voluptate veesse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat</p>
+												<a href="#" class="readmore rightalign">Read More</a>
+			</div>
 
-			</tbody>
-			<% end %>
-		</table>
-				   <%= paginate @foods %>
-		                
-	
+		</div>
 	</div>         	
 </div><!-- end of container div -->
 	

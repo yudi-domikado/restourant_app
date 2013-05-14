@@ -1,11 +1,11 @@
-<div id="content">
-                
+
                 		<!-- SLIDER STARTS HERE -->
+         
 						<div id="slider" class="slider2">
 								<div class="most-rated">
 										<div class="item">
 												<a href="#" class="img-box"><%= image_tag "slider/left_1.jpg", :alt => "Hotest" %></a>
-												<h5><a href="#">The World's Best Sndwich Recipes here</a></h5>
+												<h5><a href="#">The World's Best Sandwich Recipes here</a></h5>
 												<p>For every fine wine, there's the perfect</p>
 												<p class="rate">
 														<span class="on"></span>
@@ -18,12 +18,17 @@
 								</div>
 								<h2 class="slider-head"><%= image_tag "slider-heading.png", :alt => "Top3 Recipes of the Day" %></h2>
 								<p class="slogan">If food is an experience for you, then you will find it at the Food Recipe</p>
+
+
 								<div class="slides right-slider">
+								
 										<ul>
+										<% @slides.each do |food| %>	
 												<li>
-														<a href="#" class="img-box"><%= image_tag "slider/left_2.jpg", :alt =>"Hotest" %></a>
+							
+														<a href="#" class="img-box"><%= image_tag food.picture, :alt =>"Hotest" %></a>
 														<div class="slide-info">
-																<h2><a href="#">Do You Think You Know Real Shawarma</a></h2>
+																<h2><a href="#"><%= food.name %></a></h2>
 																<div class="rating">
 																		<span class="on"></span>
 																		<span class="on"></span>
@@ -32,79 +37,33 @@
 																		<span class="off"></span>
 																		<span>Average Member Rating: <span>4.0 / 5</span></span>
 																</div>
-																<p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center. For every fine wine, there’s the...</p>
-																<a href="#" class="readmore">Read more</a>
-														</div>
-												</li>
+																<p><%=food.info %></p>
 												
-												<li>
-														<a href="#" class="img-box"><%= image_tag "slider/left_3.jpg", :alt =>"Hotest" %></a>
-														<div class="slide-info">
-																<h2><a href="#">Yummy Chocolate Cake You Have Never Eaten</a></h2>
-																<div class="rating">
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="off"></span>
-																		<span>Average Member Rating: <span>4.0 / 5</span></span>
-																</div>
-																<p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center. For every fine wine, there’s the...</p>
 																<a href="#" class="readmore">Read more</a>
-														</div>
+														</div>				 
 												</li>
-												
-												<li>
-														<a href="#" class="img-box"><%= image_tag "slider/left_1.jpg", :alt =>"Hotest" %></a>
-														<div class="slide-info">
-																<h2><a href="#">Special Pizza Recipe</a></h2>
-																<div class="rating">
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="on"></span>
-																		<span class="off"></span>
-																		<span>Average Member Rating: <span>4.0 / 5</span></span>
-																</div>
-																<p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center. For every fine wine, there’s the...</p>
-																<a href="#" class="readmore">Read more</a>
-														</div>
-												</li>
-										</ul>
+
+										<% end %>
+										</ul>		
 										<p class="sliderNav"><span></span></p>
+							
 								</div><!-- end of slides -->
 						</div><!-- end of Slider div -->
 						<!-- SLIDER AREA ENDS HERE -->
-                        
+                
 
 <div id="whats-hot">
 			            		<h2 class="w-bot-border">Whats <span>Hot</span></h2>
 			                
 				                <ul class="cat-list clearfix">
+				                	<% @whatshot.take(4).each do |food| %>
 					                	<li>
-						                    	<h3><a href="#">Indian Special</a></h3>
-						                        <a href="#" class="img-box"><%= image_tag "hot-recipes/hot_1.jpg", :alt =>"Recipe Collections" %></a>
-						                        <h4><a href="#">Some Heading text goes here //</a></h4>
-						                        <p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center<a href="#">...more</a></p>
+						                    	<h3><a href="#"><%= food.name %></a></h3>
+						                        <a href="#" class="img-box"><%= image_tag food.picture, :alt =>"Recipe Collections" %></a>
+						                        <h4><a href="#">Information</a></h4>
+						                        <p><%= food.info %><a href="#">...more</a></p>
 					                    </li>
-					                    <li>
-						                    	<h3><a href="#">Rice Special</a></h3>
-						                        <a href="#" class="img-box"><%= image_tag "hot-recipes/hot_2.jpg", :alt =>"Recipe Collections" %></a>
-						                        <h4><a href="#">Some Heading text goes here //</a></h4>
-						                        <p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center<a href="#">...more</a></p>
-					                    </li>
-					                    <li>
-						                    	<h3><a href="#">Sea Food</a></h3>
-						                        <a href="#" class="img-box"><%= image_tag "hot-recipes/hot_3.jpg", :alt =>"Recipe Collections" %></a>
-						                        <h4><a href="#">Some Heading text goes here //</a></h4>
-						                        <p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center<a href="#">...more</a></p>
-					                    </li>
-					                    <li>
-						                    	<h3><a href="#">Sandwiches</a></h3>
-						                        <a href="#" class="img-box"><%= image_tag "hot-recipes/hot_4.jpg", :alt =>"Recipe Collections" %></a>
-						                        <h4><a href="#">Some Heading text goes here //</a></h4>
-						                        <p>For every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center<a href="#">...more</a></p>
-					                    </li>
+					                <% end %>
 				                </ul>
 			                
 			            </div><!-- end of whats-hot div -->
@@ -114,13 +73,16 @@
 			            	
 				                <div class="wk-special clearfix">
 					                	<h2 class="w-bot-border">Weekly <span>Special</span></h2>
+					                
 					                    <div class="img-box">
-					                    		<%= image_tag "hot-recipes/special.jpg", :alt => "Weekly Special" %>
+					                    	<% @weekly.take(1).each do |food| %>
+					                    		<%= image_tag food.picture, :alt => "Weekly Special" %>
 					                    </div>
-					                    <h4><a href="#">Heading text goes here //</a></h4>
-					                    <p>or every fine wine, there’s the perfect pairing of olives and cheese. Discover oodles of great tips and pairings in our idea center. Mouth water recipes and <a href="#">...more</a></p>
+					                    <h4><%= food.name %></h4>
+					                    <p><%= food.info %><a href="#">...more</a></p>
 					                    <span class="clearfix"></span><br />
 				                    	<a href="#" class="readmore">Recent Weekly Specials</a>
+				                    		<% end %>
 				                </div>
 			                
 			                <div class="newsEvent">
@@ -275,9 +237,9 @@
 				                	</div><!-- end of tabed div -->
 			                </div><!-- end of fav-recipes div -->
 			                
-			                <div class="ads-642x79">
-			                		<% image_tag "adv.jpg", :alt =>"ads" %>
-			                </div>
+<!-- 			                <div class="ads-642x79">
+			                		<#% image_tag "adv.jpg", :alt =>"ads" %>
+			                </div> -->
 			                
 			            </div><!-- end of home-infos div -->
   

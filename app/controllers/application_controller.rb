@@ -19,5 +19,5 @@ class ApplicationController < ActionController::Base
 	  session[:cart_id] = request.session_options[:id]	
 	  #penjelasan method - > cart_id null maka cart_id dimasukan session_id kalo sudah ada dari awal di return kembali
 	end
-
+  
 end
