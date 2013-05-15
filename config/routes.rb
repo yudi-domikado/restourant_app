@@ -15,6 +15,7 @@ RestaurantApp::Application.routes.draw do
   resources  :carts
   resources  :cart_items
   resources  :topups
+  resources  :categories
   get "/index"     ,  to: 'home#index'
   get "/contact_us",  to: 'home#contact_us'
   get "/about_us"  ,  to: 'home#about_us'

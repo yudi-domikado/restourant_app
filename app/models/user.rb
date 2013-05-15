@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
-  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,:trackable
   # :lockable, :timeoutable and :omniauthable

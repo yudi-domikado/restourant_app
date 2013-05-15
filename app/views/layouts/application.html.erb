@@ -49,13 +49,17 @@
 												</ul>
 										</li> -->
 										<li><a href="/foods">Our Menu</a></li>
-                                    <!--     <li>
-												<a href="single-sb.html">Recipe Detail</a>
+                      <li>
+												<a href="/categories">Categories</a>
 												<ul>
-														<li><a href="single-sb.html">Variation One</a></li>
-														<li><a href="single-full.html">Variation Two</a></li>
+												<% @categories.each do |f| %>			
+												<li><%= link_to f.category,category_path(f) %></li>
+												<% end %>		
+														<!-- <li><a href="single-sb.html">Variation One</a></li> -->
+														<!-- <li><a href="single-full.html">Variation Two</a></li> -->
 												</ul>
-										</li> -->
+											</li>
+										</li> 
 <!-- 										<li><a href="services.html">Services</a></li>
 										<li><a href="single.html">Single Post</a></li>										
                     <li><a href="features.html">Features</a> -->
