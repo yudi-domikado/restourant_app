@@ -6,6 +6,11 @@ before_filter :authenticate_user! # harus login
 
 	def check_out
 		@cart = Cart.find_or_create_by_session_id(session_cart)	
+		@weekly = Food.where(:weekly => true)
+	end
+
+	def show
+		redirect_to foods_path
 	end
 
 end

@@ -7,14 +7,14 @@
 				<p>If food is an experience for you, then you will find it at the Food Recipe</p>
 				<table class="table">
 				  <thead >
-			  	<tr>
-					 	<th>Name</th>
-					 	<th>Picture</th>
-					 	<th>Price</th>
-					 	<th>Category</th>
-					 	<th>Tags</th>
-					 	<th>Purchase</th>
-			    </tr>
+				  	<tr>
+						 	<th>Name</th>
+						 	<th>Picture</th>
+						 	<th>Price</th>
+						 	<th>Category</th>
+						 	<th>Tags</th>
+						 	<th>Purchase</th>
+				    </tr>
 			  </thead>
 			  <tbody>
 					<% @foods.each do |food| %>
@@ -32,7 +32,7 @@
 								<% if food.quantity.to_i > 0 || food.unlimited # ! mempersingkat jawaban bolean untuk false , || untuk or %>
 									<%= form_tag carts_path do  %>	
 						   			<%= hidden_field_tag :food_id, food.id %> <!-- memindahkan value -->
-						   			<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 1 %>
+						   			<%= number_field_tag :quantity, 1, :style => "width: 50px", :min => 0 %>
 							 		 	<%= submit_tag 'Buy Now', :class => 'readmore' %>		
 							  	<% end %>
 							  <% else %>
@@ -85,7 +85,6 @@
 												<p><a href="#" class="black">Lorem ipsum dolor sit amet,</a> consectetur adip isicing elit, sed do eiusmod tempor incididuntut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitatimco laboris nisi ut aliquip ex ea commodo conquat. Duis aute irure dolor in reprehenderit in voluptate veesse cillum dolore eu fugiat nullapariatur. Excepteur sint occaecat</p>
 												<a href="#" class="readmore rightalign">Read More</a>
 			</div>
-
 		</div>
 	</div>         	
 </div><!-- end of container div -->

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/amatsuda/kaminari.git
-  revision: c721d3bc9cbe48d08d22e1057cb3d2f3310fe90c
+  revision: 7d209354119a8d5d273def3a7f5c6d011c4baa0a
   specs:
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: efc257075a64a9f25f45454fc5ee1abe9443285a
+  revision: 46b5bf8d7ef9333ee18deb32fb0e1a1a4978f41b
   specs:
     activeadmin (0.6.0)
       arbre (>= 1.0.1)
@@ -31,25 +31,8 @@ GIT
       rails (>= 3, < 5)
 
 GIT
-  remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 404d7feca2596850ba2710e7c755773ba1e8eaa0
-  specs:
-    twitter-bootstrap-rails (2.2.6)
-      actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
-      railties (>= 3.1)
-
-GIT
-  remote: git://github.com/stefankroes/ancestry.git
-  revision: 6d09564d31b6fe14b38c6d269471a20109da92c7
-  specs:
-    ancestry (2.0.0.rc1)
-      activerecord (>= 3.0.0)
-
-GIT
   remote: git://github.com/thoughtbot/paperclip.git
-  revision: 7d807c6af3e89c56e2e846352074f2eac1620115
+  revision: e377e85f5539739a15bdd4c4338cb1c0728865e7
   specs:
     paperclip (3.4.1)
       activemodel (>= 3.0.0)
@@ -88,12 +71,14 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    ancestry (1.3.0)
+      activerecord (>= 2.3.14)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bourbon (3.1.5)
+    bourbon (3.1.6)
       sass (>= 3.2.0)
       thor
     builder (3.0.4)
@@ -119,6 +104,7 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    friendly_id (4.0.9)
     has_scope (0.5.1)
     hike (1.2.2)
     i18n (0.6.4)
@@ -194,6 +180,10 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.6)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -208,9 +198,10 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on!
-  ancestry!
+  ancestry
   coffee-rails (~> 3.2.1)
   devise
+  friendly_id (~> 4.0.9)
   jquery-rails
   kaminari!
   mysql2
@@ -218,5 +209,5 @@ DEPENDENCIES
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   therubyracer
-  twitter-bootstrap-rails!
+  twitter-bootstrap-rails
   uglifier (>= 1.0.3)

@@ -4,7 +4,6 @@ ActiveAdmin.register User do
 	  f.inputs do
 	  	f.input :name
 	    f.input :email
-	    f.input :balance
 	    f.input :password
 	    f.input :password_confirmation    
 	  end
@@ -14,7 +13,6 @@ ActiveAdmin.register User do
 	index do |c|
     c.column :name
     c.column :email
-    c.column :balance
     actions
   end
 end

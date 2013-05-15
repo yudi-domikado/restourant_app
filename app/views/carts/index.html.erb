@@ -1,53 +1,57 @@
-<h1> Hello world ! </h1>
-
-<table class="table">
-	<thead>
-		<tr>
-			<th>Order Name</th>
-			<th></th>
-		  <th>Sub Total</th>
-		  <th>Quantity</th>
-		  <th></th>
-		  <th></th>
-		</tr>
-	</thead>
-
-	<tbody>
-		
-		<% @cart.cart_items.each do |cart_item|%>
-		<tr>
-			<td><%= cart_item.food.try(:name) %></td>
-			<td><%= image_tag cart_item.food.picture.url(:thumb) %></td>
-			<td><%= number_to_currency(cart_item.price * cart_item.quantity, unit: "Rp.", format: "%u %n")  %></td>
-			<td>
-        <%= form_for cart_item do |f_item| %> 
-          <%= f_item.number_field :quantity, :style => "width:50px"%>
-   		  	<%= f_item.submit "Update", class: 'btn' %>	 
-   		  	<%= link_to "Delete", cart_item_path(cart_item), :method => :delete, :class => 'btn btn-alert' %>
-   		  <% end %>
-   		</td>
-			<td></td>
-		</tr>
-	</tbody>
-<% end %>
-</table>
-	<div class="btn btn-inverse">
-				<%= link_to "Check Out", check_out_users_path %>
+<div id="content" class="clearfix">
+	<div id="left-area" class="clearfix full-wide"> 
+		<div class="columns">
+			<div class="two-third">
+				<h1> Your <span>Cart</span> </h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Order Name</th>
+							<th></th>
+						  <th>Sub Total</th>
+						  <th>Quantity</th>
+						  <th></th>
+						  <th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @cart.cart_items.each do |cart_item|%>
+						<tr>
+							<td><%= cart_item.food.try(:name) %></td>
+							<td><%= image_tag cart_item.food.picture.url(:thumb) %></td>
+							<td><%= number_to_currency(cart_item.price * cart_item.quantity, unit: "Rp.", format: "%u %n")  %></td>
+							<td>
+				      <%= form_for cart_item do |f_item| %> 
+				        <%= f_item.number_field :quantity, :style => "width:50px"%>
+				       	<%= f_item.submit "Update", class: 'readmore' %>	 
+				   	  	<%= link_to "Delete", cart_item_path(cart_item), :method => :delete, :class => 'readmore' %>
+				   	<% end %>
+				   	</td>
+						<td>
+						</td>
+						</tr>
+					</tbody>
+				<% end %>
+				</table>
+					<%= link_to "Check Out", check_out_users_path, :class => 'readmore' %>
 			</div>
-	<!-- form_tag membuat form tanpa perlu ada object pembentuk biasanya string atau hash-->
-		<!-- form_for membuat form berdasarkan object pembentuk dan pasti punya kelas-->
+		</div>
+	</div>
+</div>		
+<!-- form_tag membuat form tanpa perlu ada object pembentuk biasanya string atau hash-->
+	<!-- form_for membuat form berdasarkan object pembentuk dan pasti punya kelas-->
 
-		<!-- form for pasti mengikutin nama object nama kelasnya user dari objek pembentuk(misalkan) -->
+	<!-- form for pasti mengikutin nama object nama kelasnya user dari objek pembentuk(misalkan) -->
 
-		<!-- form_for @user do |f| salah satu contoh pembuatan form_for -->
+	<!-- form_for @user do |f| salah satu contoh pembuatan form_for -->
 
-		<!-- form_tag cart_path do salah satu contoh pembuatan form_tag dan tidak perlu pakai do terkadang -->
+	<!-- form_tag cart_path do salah satu contoh pembuatan form_tag dan tidak perlu pakai do terkadang -->
 
-		<!-- selalu ditambahi dengan _tag dibelakang apapun field//tipe -->
-		<!-- text_field_tag :name,"value"  <input name="name" type="text" "value="value">-->
-		<!-- text_field_tag "user[name]", "value" <input name="user[name]" type="text" value="value"> -->
-		<!-- form aksi POST PUT GET DELETE bisa diliat di rake routes -->
-		<!-- kalo mengambil data memakai GET -->
-		<!-- POST udah masih request , kalo PUT udah pasti update , kalo DELETE pasti destroy -->
-		<!-- PUT butuh ID , GET pake ID jatuhnya show , Delete butuh ID -->
-		<!-- REST ACTION - > Representational state transfer mempresentasikan keadaan yang mau di transfer-->
+	<!-- selalu ditambahi dengan _tag dibelakang apapun field//tipe -->
+	<!-- text_field_tag :name,"value"  <input name="name" type="text" "value="value">-->
+	<!-- text_field_tag "user[name]", "value" <input name="user[name]" type="text" value="value"> -->
+	<!-- form aksi POST PUT GET DELETE bisa diliat di rake routes -->
+	<!-- kalo mengambil data memakai GET -->
+	<!-- POST udah masih request , kalo PUT udah pasti update , kalo DELETE pasti destroy -->
+	<!-- PUT butuh ID , GET pake ID jatuhnya show , Delete butuh ID -->
+	<!-- REST ACTION - > Representational state transfer mempresentasikan keadaan yang mau di transfer-->
